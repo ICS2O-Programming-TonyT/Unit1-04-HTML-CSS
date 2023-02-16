@@ -4,29 +4,38 @@
 
 ###############################################
 
+---
+
 name: GitHub's Super Linter
 
-on:
-  push:
-    branches:
-      - main
-      - develop
-      - feature/**
+on: push
 
 jobs:
-  run-linters:
-    name: GitHub's Super Linter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-      - name: Run GitHub Super Linter
-        uses: github/super-linter@v4
-        with:
-          VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: main
-        env:
-          VALIDATE_MARKDOWN_LINKS: false
-          VALIDATE_TYPESCRIPT: false
-          SUPER_LINTER_DEBUG: false
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+ run-linters:
+
+   name: GitHub's Super Linter
+
+   runs-on: ubuntu-latest
+
+   steps:
+
+     - name: Check out Git repository
+
+       uses: actions/checkout@master
+
+     - name: Run GitHub Super Linter
+
+       uses: github/super-linter@main
+
+       env:
+
+         VALIDATE_ALL_CODEBASE: true
+
+         VALIDATE_JAVASCRIPT_STANDARD: false
+
+         VALIDATE_JSCPD: false
+
+         DEFAULT_BRANCH: main
+
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
